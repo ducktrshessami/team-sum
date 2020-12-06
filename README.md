@@ -1,2 +1,3 @@
 # team-sum
-Homework 10
+
+Not to be confused with dim sum
