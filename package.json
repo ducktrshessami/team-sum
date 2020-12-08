@@ -10,20 +10,20 @@
   "scripts": {
     "test": "jest --verbose test/*"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stevetrilogy/unit10hw.git"
-  },
-  "author": "",
+  "author": "ducktrshessami",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/stevetrilogy/unit10hw/issues"
-  },
-  "homepage": "https://github.com/stevetrilogy/unit10hw#readme",
   "dependencies": {
     "inquirer": "^6.3.1"
   },
   "devDependencies": {
     "jest": "^24.8.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ducktrshessami/team-sum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ducktrshessami/team-sum/issues"
+  },
+  "homepage": "https://github.com/ducktrshessami/team-sum#readme"
 }
