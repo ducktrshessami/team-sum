@@ -102,6 +102,7 @@ async function getEmployee() {
     throw new Error("Role not specified");
 }
 
+// Ask user if another user is to be added
 function loopCheck() {
     return inquirer.prompt(quesLoop)
         .then(response => {
@@ -110,16 +111,19 @@ function loopCheck() {
         });
 }
 
+// Validate IDs as unique numbers
 function validateId(id) {
     id = parseInt(id);
     return !isNaN(id) && employees.every(e => e.getId() != id) ? true : "IDs must be unique numbers";
 }
 
+// Validate proper E-mail format
 function validateEmail(email) {
     let result = email.match(/[a-z0-9._\-]+@[a-z0-9._\-]+\.[a-z0-9._\-]+/i);
     return result && result[0] === email ? true : "Invalid E-mail address";
 }
 
+// Create output folder if need be and write to file
 function output(data) {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR);
