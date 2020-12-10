@@ -44,9 +44,10 @@ const quesGeneral = [
 // Questions by role
 const quesManager = [
     {
-        type: "number",
+        type: "input",
         name: "officeNumber",
-        message: "Office Number:"
+        message: "Office Number:",
+        validate: validateOffice
     }
 ];
 const quesEngineer = [
@@ -111,16 +112,26 @@ function loopCheck() {
         });
 }
 
+// Validate number
+function validateNumber(n) {
+    n = parseInt(n);
+    return !isNaN(n);
+}
+
 // Validate IDs as unique numbers
 function validateId(id) {
-    id = parseInt(id);
-    return !isNaN(id) && employees.every(e => e.getId() != id) ? true : "IDs must be unique numbers";
+    return validateNumber(id) && employees.every(e => e.getId() != id) ? true : "IDs must be unique numbers";
 }
 
 // Validate proper E-mail format
 function validateEmail(email) {
     let result = email.match(/[a-z0-9._\-]+@[a-z0-9._\-]+\.[a-z0-9._\-]+/i);
     return result && result[0] === email ? true : "Invalid E-mail address";
+}
+
+// Validate office number as number
+function validateOffice(officeNumber) {
+    return validateNumber(officeNumber) || "Invalid office number";
 }
 
 // Create output folder if need be and write to file
