@@ -62,6 +62,24 @@ const quesIntern = [
     }
 ];
 
+// Prompt for info and return employee object
+async function employee() {
+    let roleData;
+    let genData = await inquirer.prompt(quesGeneral);
+    switch (genData.role) {
+        case "Manager":
+            roleData = await inquirer.prompt(quesManager);
+            return new Manager(genData.name, genData.id, genData.email, roleData.officeNumber);
+        case "Engineer":
+            roleData = await inquirer.prompt(quesEngineer);
+            return new Engineer(genData.name, genData.id, genData.email, roleData.github);
+        case "Intern":
+            roleData = await inquirer.prompt(quesIntern);
+            return new Intern(genData.name, genData.id, genData.email, roleData.school);
+    }
+    throw new Error("Role not specified");
+}
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
