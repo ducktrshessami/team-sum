@@ -54,7 +54,7 @@ const quesEngineer = [
     {
         type: "input",
         name: "github",
-        message: "GitHub:"
+        message: "GitHub Username:"
     }
 ];
 const quesIntern = [
