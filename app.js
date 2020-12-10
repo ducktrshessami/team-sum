@@ -18,14 +18,16 @@ const quesGeneral = [
         message: "Name:"
     },
     {
-        type: "number",
+        type: "input",
         name: "id",
-        message: "ID:"
+        message: "ID:",
+        validate: validateId
     },
     {
         type: "input",
         name: "email",
-        message: "E-mail:"
+        message: "E-mail:",
+        validate: validateEmail
     },
     {
         type: "list",
@@ -103,6 +105,16 @@ async function getEmployee() {
 function loopCheck() {
     return inquirer.prompt(quesLoop)
         .then(response => response.check);
+}
+
+function validateId(id) {
+    id = parseInt(id);
+    return !isNaN(id) && employees.every(e => e.getId() !== id) ? true : "IDs must be unique numbers";
+}
+
+function validateEmail(email) {
+    let result = email.match(/[a-z0-9._\-]+@[a-z0-9._\-]+.[a-z0-9._\-]+/i);
+    return result && result[0] === email ? true : "Invalid E-mail address";
 }
 
 // After the user has input all employees desired, call the `render` function (required
