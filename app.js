@@ -62,8 +62,28 @@ const quesIntern = [
     }
 ];
 
+// Loop check question
+const quesLoop = [
+    {
+        type: "confirm",
+        name: "check",
+        message: "Add another employee?"
+    }
+];
+
+var employees;
+
+async function main() {
+    employees = [];
+    do {
+        console.log("Employee info:");
+        employees.push(await getEmployee());
+    } while (await loopCheck());
+    console.log(employees);
+}
+
 // Prompt for info and return employee object
-async function employee() {
+async function getEmployee() {
     let roleData;
     let genData = await inquirer.prompt(quesGeneral);
     switch (genData.role) {
@@ -78,6 +98,11 @@ async function employee() {
             return new Intern(genData.name, genData.id, genData.email, roleData.school);
     }
     throw new Error("Role not specified");
+}
+
+function loopCheck() {
+    return inquirer.prompt(quesLoop)
+        .then(response => response.check);
 }
 
 // After the user has input all employees desired, call the `render` function (required
@@ -99,3 +124,5 @@ async function employee() {
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+main();
