@@ -10,9 +10,57 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+// Generic employee questions
+const quesGeneral = [
+    {
+        type: "input",
+        name: "name",
+        message: "Name:"
+    },
+    {
+        type: "number",
+        name: "id",
+        message: "ID:"
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "E-mail:"
+    },
+    {
+        type: "list",
+        name: "role",
+        message: "Role:",
+        choices: [
+            "Manager",
+            "Engineer",
+            "Intern"
+        ]
+    }
+]
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+// Questions by role
+const quesManager = [
+    {
+        type: "number",
+        name: "officeNumber",
+        message: "Office Number:"
+    }
+];
+const quesEngineer = [
+    {
+        type: "input",
+        name: "github",
+        message: "GitHub:"
+    }
+];
+const quesIntern = [
+    {
+        type: "input",
+        name: "school",
+        message: "School:"
+    }
+];
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
