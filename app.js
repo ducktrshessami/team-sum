@@ -112,7 +112,7 @@ function loopCheck() {
 
 function validateId(id) {
     id = parseInt(id);
-    return !isNaN(id) && employees.every(e => e.getId() !== id) ? true : "IDs must be unique numbers";
+    return !isNaN(id) && employees.every(e => e.getId() != id) ? true : "IDs must be unique numbers";
 }
 
 function validateEmail(email) {
@@ -124,7 +124,9 @@ function output(data) {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR);
     }
-    fs.promises.writeFile(outputPath, data).catch(console.error);
+    fs.promises.writeFile(outputPath, data).then(() => {
+        console.log(`Output file: ${outputPath}`);
+    }).catch(console.error);
 }
 
 main();
