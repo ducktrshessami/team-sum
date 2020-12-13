@@ -22,6 +22,8 @@ Just run the following command in the package directory:
 node .
 ```
 
+Outputs the summary page to an `output` folder in the package directory.
+
 # Testing
 
 Run the following command in the package directory:
